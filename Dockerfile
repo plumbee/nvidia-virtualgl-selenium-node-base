@@ -12,15 +12,16 @@ RUN echo "${TZ}" > /etc/timezone \
   && dpkg-reconfigure --frontend noninteractive tzdata
 
 #==============================
-# install VirtualGl 2.5.1
+# install VirtualGl
 # see https://github.com/plumbee/nvidia-virtualgl
 #==============================
+ENV VIRTUALGL_VERSION 2.5.1
 RUN apt-get update && apt-get install -y \
     libglu1-mesa-dev mesa-utils wget xterm && \
-    wget http://downloads.sourceforge.net/project/virtualgl/2.5.1/virtualgl_2.5.1_amd64.deb && \
-    dpkg -i virtualgl_2.5.1_amd64.deb  &&\
+    wget http://downloads.sourceforge.net/project/virtualgl/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb && \
+    dpkg -i virtualgl*_amd64.deb  &&\
     /opt/VirtualGL/bin/vglserver_config -config +s +f -t && \
-    rm virtualgl_2.5.1_amd64.deb && \
+    rm virtualgl*_amd64.deb && \
     apt-get remove -y wget && \
     rm -rf /var/lib/apt/lists/*
 
