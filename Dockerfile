@@ -15,7 +15,7 @@ RUN echo "${TZ}" > /etc/timezone \
 # install VirtualGl
 # see https://github.com/plumbee/nvidia-virtualgl
 #==============================
-ENV VIRTUALGL_VERSION 2.5.1
+ENV VIRTUALGL_VERSION 2.5.2
 RUN apt-get update && apt-get install -y \
     libglu1-mesa-dev mesa-utils wget xterm && \
     wget http://downloads.sourceforge.net/project/virtualgl/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb && \
